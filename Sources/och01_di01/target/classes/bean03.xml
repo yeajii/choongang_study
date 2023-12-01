@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mb3" class="sam03.MessageBeanImpl">
+		<constructor-arg><value>황남오</value></constructor-arg>
+		<constructor-arg value="DI 메리 추석"></constructor-arg>
+	</bean>
+</beans>

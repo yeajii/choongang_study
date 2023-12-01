@@ -1,0 +1,10 @@
+package com.oracle.oBootMybatis01.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Service
+@RequestMapping
+public class postServiceImpl implements postService {
+	
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+<!-- AOP로 엮기 위해서 세팅한 클래스를 bean으로 설정 -->
+<!-- 핵심관심사를 엮는 클래스 = 횡단관심사 = logAop -->
+	<bean id="logAop" class="aop1.LogAop"></bean>
+
+
+<!-- loggerAop: 위의 횡단관심사를 around 방식으로 엮는다 -->
+<!-- aop:pointcut : 핵심관심사의 위치 -->
+	<aop:config>
+		<aop:aspect id="logger1" ref="logAop">							<!-- "within(aop1.W*)" : student는 핵심관심사가 아니게 됨 -->
+			<aop:pointcut expression="within(aop1.S*)" id="pointcut1"/>  <!-- "within(aop1.S*)" : worker는 핵심관심사가 아니게 됨 -->
+			<aop:around method="loggerAop" pointcut-ref="pointcut1"/>   <!-- "within(aop1.*)" : student, worker 둘 다 핵심관심사가 됨 -->
+		</aop:aspect>
+	</aop:config>
+
+
+<!-- student, worker : 핵심관심사 -->
+	<bean id="student" class="aop1.Student">
+		<property name="name" value="연개소문"/>
+		<property name="age" value="50"/>
+		<property name="gradeNum" value="3"/>
+		<property name="classNum" value="5"/>
+	</bean>
+	
+	<bean id="worker" class="aop1.Worker">
+		<property name="name" value="이순신"/>
+		<property name="age" value="35"/>
+		<property name="job" value="개발자"/>
+	</bean>
+	
+</beans>

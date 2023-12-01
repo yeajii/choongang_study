@@ -1,0 +1,12 @@
+package com.oracle.s202350101.model;
+import lombok.Data;
+
+import java.sql.Date;
+import java.util.List;
+import java.util.Map;
+
+@Data
+public class TodoModel {
+    private List<Code> 			 onelist;	// 우선순위 리스트 select  
+    private Map<Date,List<Todo>> mapData;
+}

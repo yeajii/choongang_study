@@ -1,0 +1,31 @@
+package com.oracle.oBootMybatis01.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+
+import com.oracle.oBootMybatis01.model.Post;
+
+import lombok.RequiredArgsConstructor;
+
+@Repository
+@RequiredArgsConstructor
+public class postDaoImpl implements postDao {
+	
+	private final SqlSession session;
+
+	// 전체 리스트 select 
+	@Override
+	public List<Post> allPostList() {
+		List<Post> allPostList = null;
+		try {
+			allPostList = new ArrayList<Post>();
+		} catch (Exception e) {
+			System.out.println("postDaoImpl Exception-> " + e);
+		}
+		return allPostList;
+	}
+
+}

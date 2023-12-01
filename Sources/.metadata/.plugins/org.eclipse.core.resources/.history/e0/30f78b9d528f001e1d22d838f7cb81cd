@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>번호</td> <td>이름</td> <td>날짜</td> <td>내용</td>
+		</tr>
+		<tr>
+			<td>${postContent.post_no}</td>
+			<td>${postContent.post_name}</td>
+			<td>${postContent.create_date}</td>
+			<td>${postContent.post_content}</td>
+		</tr>
+		<tr>
+			<td colspan="4"><button type="button" onclick="location.href='start'">목록</button></td>
+			<td colspan="4"><button type="button" onclick="location.href='post_update_move'">수정</button></td>
+			<td colspan="4"><button type="button" onclick="location.href='post_delete'">삭제</button></td>
+		</tr>
+	</table>
+
+</body>
+</html>

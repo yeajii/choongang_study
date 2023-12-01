@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="collectionBean" class="DI05.CollectionBean">
+		<property name="addressList">
+			<map>
+				<entry>
+					<key><value>홍길동</value></key> <value>율도국</value>
+				</entry>
+				<entry>
+					<key><value>중앙</value></key> <value>이대캠퍼스</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

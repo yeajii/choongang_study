@@ -1,0 +1,6 @@
+com\oracle\oMVCBoard\controller\BController.class
+com\oracle\oMVCBoard\command\BListCommand.class
+com\oracle\oMVCBoard\command\BCommand.class
+com\oracle\oMVCBoard\dao\BDao.class
+com\oracle\oMVCBoard\dto\BDto.class
+com\oracle\oMVCBoard\HomeController.class

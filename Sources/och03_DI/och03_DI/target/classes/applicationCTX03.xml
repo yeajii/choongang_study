@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="student1" class="DI03.Student">
+		<constructor-arg><value>연개소문</value></constructor-arg>
+		<constructor-arg><value>50</value></constructor-arg>
+		<constructor-arg><value>4학년</value></constructor-arg>
+		<constructor-arg><value>25번</value></constructor-arg>
+	</bean>
+	
+	<!-- 생성자가 먼저 실행되고, property가 실행된다 
+	(객체를 만들기 위해 생성자를 가장 먼저 만들고 setter로 값을 넣었기에 당연한 것임) -->
+ 	<bean id="student2" class="DI03.Student">
+		<property name="name">
+			<value>김춘추</value>
+		</property>
+	
+	<!-- 생성자는 순서대로 넣어주어야 하는데, 순서를 바꾸고 싶으면 인덱스 활용  
+	 	  이름 나이 순인데 인덱스로 순서를 바꾸어 주었다 = 인덱스로 DI 변경 가능 -->
+		<constructor-arg  index="1"  value="30"/>
+		<constructor-arg  index="0">
+			<value>김유신</value>
+		</constructor-arg>
+		 
+		<constructor-arg>
+			<value>3학년</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>11번</value>
+		</constructor-arg>
+	</bean> 
+	
+	<bean id="studentInfo" class="DI03.StudentInfo">
+		<constructor-arg><ref bean="student1"/></constructor-arg>
+	</bean>
+	
+</beans>

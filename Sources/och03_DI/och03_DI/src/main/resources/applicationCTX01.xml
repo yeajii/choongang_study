@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 클래스는 bean으로 선언해야 함 -->
+	<!--                             클래스명     -->
+	<bean id="calculator" class="DI01.Calculator"></bean> <!-- 클래스 안에 맴버변수 없어서 안적음 -->
+	<bean id="myCalculator" class="DI01.MyCalculator">
+		<!-- <ref bean="calculator"/> 하게 되면, call by reference로 객체를 참조한다 -->
+		<property name="calculator"><ref bean="calculator"/></property>
+		<property name="firstNum" value="35"/>
+		<property name="secondNum" value="5"/>
+	</bean>
+</beans>

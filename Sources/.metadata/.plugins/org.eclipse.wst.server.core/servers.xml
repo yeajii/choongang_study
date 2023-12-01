@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v9.0 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v9.0 Server at localhost" name="Tomcat v9.0 Server at localhost" runtime-id="Apache Tomcat v9.0" server-type="org.eclipse.jst.server.tomcat.90" server-type-id="org.eclipse.jst.server.tomcat.90" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="10">
+    <list key="modules" value0="och07_MVC01::org.eclipse.jst.jee.server:och07_MVC01::jst.web::2.5" value1="och07_MVC02::org.eclipse.jst.jee.server:och07_MVC02::jst.web::2.5" value2="och07_MVC03::org.eclipse.jst.jee.server:och07_MVC03::jst.web::2.5" value3="och07_MVC05::org.eclipse.jst.jee.server:och07_MVC05::jst.web::2.5" value4="och07_MVC041::org.eclipse.jst.jee.server:och07_MVC041::jst.web::2.5" value5="och07_MVC042::org.eclipse.jst.jee.server:och07_MVC042::jst.web::2.5" value6="och07_MVC043::org.eclipse.jst.jee.server:och07_MVC043::jst.web::2.5" value7="och09_security1::org.eclipse.jst.jee.server:och09_security1::jst.web::2.5" value8="och07_MVCBoard::org.eclipse.jst.jee.server:och07_MVCBoard::jst.web::2.5"/>
+  </server>
+</servers>

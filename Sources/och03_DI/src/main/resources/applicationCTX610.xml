@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 생성자를 먼저 적고, 안 적은 맴버변수는 setter로 적음 -->
+<!-- 메소드명이 id 명이 된다 -->
+	<bean id="student1" class="DI06.Student">
+		<constructor-arg value="선덕여왕"/>
+		<constructor-arg value="30"/>
+		<constructor-arg>
+			<list>
+				<value>승마</value>
+				<value>정지</value>
+			</list>
+		</constructor-arg>
+		
+		<property name="height" value="162"/>
+		<property name="weight" value="55"/>
+	</bean>
+	
+<!-- DI06.StudentInfo는  DI06.Student를 객체로 사용하므로 <ref>로 걸어두고, bean의 이름은 같아야 한다 -->	
+	<bean id="studentInfo1" class="DI06.StudentInfo">
+		<property name="student"> <!-- name의 Student 객체의 맴버변수이다 -->
+			<ref bean="student1"/>
+		</property>
+	</bean>
+</beans>

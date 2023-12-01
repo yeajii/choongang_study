@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<c:forEach var="list" items="${allPostList}">
+	<table border="1">
+		<tr>
+			<td>번호</td>
+			<td>${list.post_no}</td>
+		</tr>
+		
+		<tr>
+			<td>이름</td>
+			<td>${list.post_name}</td>
+		</tr>
+		
+		<tr>
+			<td>날짜</td>
+			<td>${list.create_date}</td>
+		</tr>
+		
+		<tr>
+			<td>내용</td>
+			<td>${list.post_content}</td>
+		</tr>
+	</table>	
+	</c:forEach>
+</body>
+</html>

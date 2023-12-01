@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+<!-- after랑 afterReturning이랑 거의 같은데, after가 더 넓은 범위라 기업에서 after만 건다 -->
+
+	<bean id="logAop" class="aop2.LogAop"></bean>
+	<aop:config>
+		<aop:aspect id="logger" ref="logAop">
+			<aop:pointcut expression="within(aop2.buz.*)" id="pointcut1"/>
+			<aop:around method="loggerAop"                pointcut-ref="pointcut1"/>
+		</aop:aspect>
+		<aop:aspect id="logger" ref="logAop">
+			<aop:pointcut expression="within(aop2.buz.*)" id="pointcut2"/>
+			<aop:before method="beforeAdvice"             pointcut-ref="pointcut2"/>
+		</aop:aspect>
+		<aop:aspect id="logger" ref="logAop">
+			<aop:pointcut expression="within(aop2.buz.*)"    id="pointcut3"/>
+			<aop:after-throwing method="afterThrowingAdvice" pointcut-ref="pointcut3"/>
+		</aop:aspect>
+		<aop:aspect id="logger" ref="logAop">
+			<aop:pointcut expression="within(aop2.buz.*)" id="pointcut4"/>
+			<aop:after method="afterAdvice"               pointcut-ref="pointcut4"/>
+		</aop:aspect>
+	</aop:config>
+	
+
+<!-- student, worker : 핵심관심사 -->
+	<bean id="student" class="aop2.buz.Student">
+		<property name="name" value="김춘추"></property>
+		<property name="age" value="10"></property>
+		<property name="gradeNum" value="3"></property>
+		<property name="classNum" value="5"></property>
+	</bean>
+	
+	<bean id="worker" class="aop2.buz.Worker">
+		<property name="name" value="김유신"></property>
+		<property name="age" value="35"></property>
+		<property name="job" value="개발자"></property>
+	</bean>
+	
+</beans>

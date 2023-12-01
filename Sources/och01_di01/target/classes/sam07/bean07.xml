@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="outPutter" class="sam07.FileOutputter">
+		<property name="fileName" value="c:/log/msg1.txt"></property>
+	</bean>
+
+	<bean id="mb7" class="sam07.MessageBeanImpl">
+		<property name="name" value="정송환"></property>
+		<property name="greet" value="다함께 노래를 부르는"></property>
+		<property name="outPutter"><ref bean="outPutter"></ref></property>
+		<!-- 객체를 부를 때 <ref bean=""> 사용 -->
+		<!-- 위에 있는 <bean id="outPutter" 와  <ref bean="outPutter"> 이름은 같아야 한다 -->
+	</bean>
+</beans>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.oracle.mvc05.dto.student&apos; to &apos;Student&apos;&#x0D;&#x0A;- Original project: &apos;och07_MVC05&apos;&#x0D;&#x0A;- Original element: &apos;com.oracle.mvc05.dto.student&apos;&#x0D;&#x0A;- Renamed element: &apos;com.oracle.mvc05.dto.Student&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;student&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.oracle.mvc05.dto{student.java[student" matchStrategy="1" name="Student" qualified="false" references="true" similarDeclarations="false" stamp="1696382514931" textual="false" version="1.0"/>
+</session>
