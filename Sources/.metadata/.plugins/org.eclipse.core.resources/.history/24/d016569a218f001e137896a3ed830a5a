@@ -1,6 +1,0 @@
-package com.oracle.oBootMybatis01.model;
-
-public class Post {
-	
-	private int post_no;
-}

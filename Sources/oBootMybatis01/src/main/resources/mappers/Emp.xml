@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.oBootMybatis01.EmpMapper">   <!-- mapper 내의 id명 달라야 함 -->
+
+	<select id="empTotal" resultType="int">
+		select Count(*) from emp
+	</select>
+	
+ 
+    <!-- parameterType="Emp" : Emp에 있는 start와 end의 파라미터가 들어가고, Paging 작업으로 인해 1과 10이 들어감
+		 resultType="Emp"    : select의 결과를  Emp 객체 형태로 돌려준다  -->  
+	<select id="tkEmpListAll2" parameterType="Emp" resultType="Emp">
+		select *
+		from 
+		(
+			select rownum rn, a.*
+			from 
+						  (select * from emp order by empno) a
+		)
+		where rn between #{start} and #{end}           <!-- och16의 sql과 동일 -->  
+	</select>
+	
+	
+	<select id="tkEmpListAll" parameterType="Emp" resultType="Emp"> <!-- 11:40 -->
+		<![CDATA[
+			select *
+			from 
+			(
+				 select rownum rn, a.*
+				 from 
+							  (select * from emp order by empno) a
+			)
+			where  rn >= #{start} 
+			and    rn <= #{end}    
+			]]>        
+	</select>
+	
+	
+	<select id="tkEmpSelOne" parameterType="Emp" resultType="Emp">
+		select * from emp where empno = #{empno}
+	</select>
+	
+	
+	<!-- update sql을 <select>에 해도 결과는 나오지만, 맞춰서 사용해야 한다  Mybatis ppt p.17 참고 -->
+	<!-- <if> : 조건식이 참이면 실행, comm이 null이 아니라면 comm의 값을 뿌려준다, null이라면 값을 뿌리지 않는다 ? -->
+	<update id="tkEmpUpdate" parameterType="Emp">
+		update emp 
+		set    ename = #{ename}, job = #{job}, sal = #{sal}, hiredate = #{hiredate}, 
+			   <if test="#{comm} != null">comm = #{comm},</if> mgr = #{mgr}, deptno = #{deptno} 
+		where  empno = #{empno}
+	</update>
+	
+	
+	<!-- 관리자들만 선택 가능하게 , empno를 기준으로 괄호 안을 실행해서 중복 x -->
+	<select id="tkSelectManager" resultType="Emp">
+		select *
+		from   emp
+		where  empno in (select mgr from emp)
+	</select>
+	
+	
+	<!-- 값 넣는 순서를 정한 게 아니라면, DB의 스키마 순서대로 넣기  -->
+	<insert id="tkEmpInsert" parameterType="Emp">     
+		insert into emp values ( #{empno}, #{ename}, #{job}, #{mgr},  #{hiredate},  #{sal}, #{comm}, #{deptno})
+	</insert>
+	
+	
+	<!-- parameterType="Emp"도 가능, Emp 객체에서 empno를 갖고 올 수 있어서 둘 다 가능 -->
+	<delete id="tkEmpDelete" parameterType="int">   
+		delete from emp where empno = #{empno}
+	</delete>
+	
+
+	<!-- 검색  9:28 카톡보고 하기 -->
+	<select id="tkEmpSearchList3" parameterType="Emp" resultType="Emp">
+		select *
+		from 
+		(
+			select rownum rn, a.*
+			from 
+						  (select * from emp order by empno) a
+		)
+		where rn between #{start} and #{end}
+		<choose>   <!-- choose = which문 -->
+			<when test="search == 's_job'">
+				and job like '%' || #{keyword} || '%'
+			</when>
+			<when test="search == 's_ename'">
+				and ename like '%' || #{keyword} || '%'
+			</when>
+			<otherwise>
+				and job like '%'
+			</otherwise>
+		</choose>
+	</select>
+		
+	
+	<!-- 검색 결과 갯수만 갖고 오기 위함 -->
+	<select id="condEmpTotal" parameterType="Emp" resultType="int">
+		select Count(*) from emp
+		<choose>
+			<when test="search == 's_job'">
+				where job like '%' || #{keyword} || '%'
+			</when>
+			<when test="search == 's_ename'">
+				where  ename like '%' || #{keyword} || '%'
+			</when>
+			<otherwise>
+				where job like '%'
+			</otherwise>
+		</choose>
+	</select>
+	
+	
+
+	
+	
+	
+
+	
+</mapper>

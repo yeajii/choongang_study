@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.oBootMybatis01.EmpDeptMapper">
+
+    <!-- join해서 직원부서조회 
+    	  필요한 컬럼만 갖고 오기 위해 select * 이 아닌, 각 컬럼명 작성 -->
+	<select id="tkListEmpDept" resultType="EmpDept">
+		select    e.empno, e.ename, e.job, d.deptno, d.loc
+		from      emp e, dept d 
+		where     e.deptno = d.deptno
+		order by  empno
+	</select>
+	
+
+	<select id="tkDeptName" parameterType="int" resultType="java.lang.String">
+		select dname from dept where deptno = #{deptno}
+	</select>
+
+</mapper>
